@@ -70,6 +70,10 @@ class Logger {
   constructor(options = {}) {
     let { color, level, readable } = options
 
+    if (typeof level != 'string') {
+      level = 'info'
+    }
+
     level = level.toLowerCase()
 
     if (!(level in LEVELS)) {

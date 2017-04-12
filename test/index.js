@@ -1,52 +1,65 @@
 
-/**
- * Polyfills.
- */
-
-import 'babel-polyfill'
-
-/**
- * Dependencies.
- */
-
-import Contents from '..'
-import RESOURCES from '../lib/resources'
+import logger from '..'
+import { Logger } from '..'
 import assert from 'assert'
 
 /**
  * Tests.
  */
 
-describe('contents-node', () => {
+describe('heroku-logger', () => {
 
-  it('should export `Contents`', () => {
-    assert(Contents)
-    assert(Contents.prototype)
-  })
+  describe('interface', () => {
 
-  it('should be instanciable', () => {
-    const contents = new Contents()
-    assert(contents instanceof Contents)
-  })
+    it('should export `logger`', () => {
+      assert(logger)
+      assert(logger instanceof Logger)
+    })
 
-  it('should expose each resource', () => {
-    const contents = new Contents()
+    it('should export `Logger`', () => {
+      assert(Logger)
+      assert(Logger.prototype)
+    })
 
-    for (const kind in RESOURCES) {
-      assert(contents[kind])
-    }
-  })
+    it('should be instanciable', () => {
+      const l = new Logger()
+      assert(l instanceof Logger)
+    })
 
-  it('should expose methods on each resource', () => {
-    const contents = new Contents()
+    it('should set config', () => {
+      const l = new Logger()
+      assert.deepEqual(l.config, {
+        level: 'info',
+        color: false,
+        readable: false,
+        threshold: 2,
+      })
+    })
 
-    for (const kind in RESOURCES) {
-      const resource = RESOURCES[kind]
+    it('should define `logger.trace`', () => {
+      assert.equal(typeof logger.trace, 'function')
+    })
 
-      for (const method in resource) {
-        assert(contents[kind][method])
-      }
-    }
+    it('should define `logger.debug`', () => {
+      assert.equal(typeof logger.debug, 'function')
+    })
+
+    it('should define `logger.info`', () => {
+      assert.equal(typeof logger.info, 'function')
+    })
+
+    it('should define `logger.warn`', () => {
+      assert.equal(typeof logger.warn, 'function')
+    })
+
+    it('should define `logger.error`', () => {
+      assert.equal(typeof logger.error, 'function')
+    })
+
+    it('should define `logger.fatal`', () => {
+      assert.equal(typeof logger.fatal, 'function')
+    })
+
   })
 
 })
