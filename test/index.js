@@ -13,12 +13,12 @@ const example = new Logger({
   level: 'trace',
 })
 
-example.trace('message', { nested: { key: 'value' }})
-example.debug('message', { nested: { key: 'value' }})
-example.info('message', { nested: { key: 'value' }})
-example.warn('message', { nested: { key: 'value' }})
-example.error('message', { nested: { key: 'value' }})
-example.fatal('message', { nested: { key: 'value' }})
+example.trace('message', { data: [{ index: 1 }, { index: 2 }] })
+example.debug('message', { data: [{ index: 1 }, { index: 2 }] })
+example.info('message', { data: [{ index: 1 }, { index: 2 }] })
+example.warn('message', { data: [{ index: 1 }, { index: 2 }] })
+example.error('message', { data: [{ index: 1 }, { index: 2 }] })
+example.fatal('message', { data: [{ index: 1 }, { index: 2 }] })
 
 /**
  * Tests.
