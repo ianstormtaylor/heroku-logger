@@ -5,7 +5,7 @@ A dead simple logger, designed to be perfect for Heroku apps.
 
 ---
 
-## Why?
+### Why?
 
 There are lots of Node.js logging packages—simple ones that basically just print strings to the console, and complex ones like [Winston](https://github.com/winstonjs/winston) or [Bunyan](https://github.com/trentm/node-bunyan) which give you fine-grained control.
 
@@ -17,7 +17,7 @@ But the one thing that no logger handled nicely was matching Heroku's [logfmt](h
 
 ---
 
-## Example
+### Example
 
 Given an API which is what you'd expect...
 
@@ -46,7 +46,7 @@ That's it!
 
 ---
 
-## API
+### API
 
 ```js
 import logger from 'heroku-logger'
