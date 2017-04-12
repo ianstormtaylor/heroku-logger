@@ -2,7 +2,7 @@
 import Logfmt from 'logfmt'
 import chalk from 'chalk'
 import is from 'is'
-import flatten from 'flatten-obj'
+import Flatten from 'flatten-obj'
 
 /**
  * Environment variables.
@@ -22,6 +22,14 @@ const {
  */
 
 const logfmt = new Logfmt()
+
+/**
+ * Flattening helper.
+ *
+ * @type {Flattener}
+ */
+
+const flatten = Flatten({ separator: '#' })
 
 /**
  * Log levels.
@@ -134,28 +142,23 @@ class Logger {
   format = (level, message, data) => {
     const { color, readable } = this.config
     const value = LEVELS[level]
-    const flat = flatten(data, { separator: '#' })
-    const ctx = {
-      ...flat,
-      level,
-      message,
-    }
-
-    const formatted = logfmt.stringify(ctx)
+    const flat = flatten(data)
+    const ctx = { ...flat, level, message }
+    const string = logfmt.stringify(ctx)
 
     if (readable && color) {
       const tag = `${COLORS[level](`[${level}]`)}`
       const msg = value > 3 ? chalk.red(message) : message
-      const obj = `${chalk.gray(formatted)}`
+      const obj = `${chalk.gray(string)}`
       return `${tag} ${msg} ${obj}`
     }
 
     else if (readable) {
-      return `[${level}] ${message} ${formatted}`
+      return `[${level}] ${message} ${string}`
     }
 
     else {
-      return formatted
+      return string
     }
   }
 
