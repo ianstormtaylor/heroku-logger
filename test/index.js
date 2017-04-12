@@ -4,6 +4,23 @@ import { Logger } from '..'
 import assert from 'assert'
 
 /**
+ * Examples.
+ */
+
+const example = new Logger({
+  readable: true,
+  color: true,
+  level: 'trace',
+})
+
+example.trace('message', { nested: { key: 'value' }})
+example.debug('message', { nested: { key: 'value' }})
+example.info('message', { nested: { key: 'value' }})
+example.warn('message', { nested: { key: 'value' }})
+example.error('message', { nested: { key: 'value' }})
+example.fatal('message', { nested: { key: 'value' }})
+
+/**
  * Tests.
  */
 

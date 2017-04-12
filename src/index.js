@@ -2,7 +2,7 @@
 import Logfmt from 'logfmt'
 import chalk from 'chalk'
 import is from 'is'
-import Flatten from 'flatten-obj'
+import flatten from 'flat'
 
 /**
  * Environment variables.
@@ -22,14 +22,6 @@ const {
  */
 
 const logfmt = new Logfmt()
-
-/**
- * Flattening helper.
- *
- * @type {Flattener}
- */
-
-const flatten = Flatten({ separator: '#' })
 
 /**
  * Log levels.
@@ -142,7 +134,7 @@ class Logger {
   format = (level, message, data) => {
     const { color, readable } = this.config
     const value = LEVELS[level]
-    const flat = flatten(data)
+    const flat = flatten(data, { delimiter: '#' })
     const ctx = { ...flat, level, message }
     const string = logfmt.stringify(ctx)
 
