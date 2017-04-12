@@ -5,6 +5,16 @@ A dead simple logger, designed to be perfect for Heroku apps.
 
 ---
 
+### Features
+
+- It's a one-liner, because it's super simple.
+- Has sane defaults based on your `NODE_ENV` and `LOG_LEVEL` environment variables.
+- Matches Heroku's [logfmt](https://brandur.org/logfmt) formatting syntax.
+- Makes logs easy to read in development.
+- Makes logs match Heroku's own logs in production.
+
+---
+
 ### Why?
 
 There are lots of Node.js logging packages—simple ones that basically just print strings to the console, and complex ones like [Winston](https://github.com/winstonjs/winston) or [Bunyan](https://github.com/trentm/node-bunyan) which give you fine-grained control.
