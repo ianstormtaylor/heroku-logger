@@ -1,0 +1,10 @@
+# Compiled files.
+lib
+node_modules
+
+# Temporary files.
+tmp
+
+# Junk files.
+.DS_Store
+npm-debug.log
