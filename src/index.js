@@ -54,7 +54,7 @@ const COLORS = {
 }
 
 /**
- * Logger.
+ * Define the `Logger` class.
  *
  * @type {Logger}
  */
@@ -89,7 +89,7 @@ class Logger {
   }
 
   /**
-   * Log a `message` with `data` at `level`.
+   * Log to the console with `level`, `message` and `data`.
    *
    * @param {String} level
    * @param {String} message
@@ -158,7 +158,7 @@ class Logger {
 }
 
 /**
- * Logger singleton.
+ * Create a logger singleton with sane defaults.
  *
  * @type {Logger}
  */
