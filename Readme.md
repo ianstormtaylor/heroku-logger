@@ -25,22 +25,21 @@ Given an API which is what you'd expect...
 import logger from 'heroku-logger'
 
 logger.info('Starting server', { port: 4000 })
-
 logger.error('Invalid `type` argument', { argument: 'type', value: 'nuber' })
 ```
 
-In development, it will output an easy to read version...
+In development, it outputs an easy to read version...
 
 ```ini
-[info] Starting server port=4000
-[error] Invalid `type` argument argument=type value=nuber
+[info] Starting server port=4000 level=info message="Starting server"
+[error] Invalid `type` argument argument=type value=nuber level=error message="Invalid `type` argument"
 ```
 
-But in production, will omit the extra junk, since Heroku handles that for you already, and simply output the data formatted as [`logfmt`]()...
+But in production, it omits the junk, since Heroku handles that for you, and simply outputs the data in [`logfmt`]()...
 
 ```
-[HEROKU LOGGING PREFIX HERE] port=4000
-[HEROKU LOGGING PREFIX HERE] argument=type value=nuber
+2017-04-12T05:42:20.998389+00:00 app[web.1]: port=4000 level=info message="Starting server"
+2017-04-12T05:42:20.998389+00:00 app[web.1]: argument=type value=nuber level=error message="Invalid `type` argument"
 ```
 
 That's it!
