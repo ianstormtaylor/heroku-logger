@@ -40,14 +40,11 @@ logger.error('Invalid `type` argument', { argument: 'type', value: 'nuber' })
 
 In development, it outputs an easy to read version...
 
-![](./docs/screenshot.png)
+![](./docs/screenshot-dev.png)
 
 But in production, it omits the junk, since Heroku handles that for you, and simply outputs the data in [`logfmt`]()...
 
-```ini
-2017-04-12T05:42:20.998389+00:00 app[web.1]: port=4000 level=info message="Starting server"
-2017-04-12T05:42:20.998389+00:00 app[web.1]: argument=type value=nuber level=error message="Invalid `type` argument"
-```
+![](./docs/screenshot-prod.png)
 
 That's it!
 
