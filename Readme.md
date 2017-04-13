@@ -7,11 +7,9 @@ A dead simple logger, designed to be perfect for Heroku apps.
 
 ### Features
 
-- It's a one-liner, because it's super simple.
-- Has sane defaults based on your `NODE_ENV` and `LOG_LEVEL` environment variables.
-- Matches Heroku's [logfmt](https://brandur.org/logfmt) formatting syntax.
-- Makes logs easy to read in development.
-- Makes logs match Heroku's own logs in production.
+- No configuration necessary—with sane defaults based on your `NODE_ENV` and `LOG_LEVEL` environment variables.
+- Matches Heroku's own [logfmt](https://brandur.org/logfmt) formatting syntax in production.
+- Makes your logging nice and easy to read in development.
 
 ---
 
