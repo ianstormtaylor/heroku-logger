@@ -48,8 +48,8 @@ But in production, it omits the junk, since Heroku handles that for you, and sim
 
 In any add-ons attached to your Heroku log drain, the metadata will be picked up automatically...
 
-![](./docs/screenshot-viewer-collapsed.png)
-![](./docs/screenshot-viewer-expanded.png)
+![](./docs/screenshot-addon-collapsed.png)
+![](./docs/screenshot-addon-expanded.png)
 
 That's it!
 
