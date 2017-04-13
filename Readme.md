@@ -69,7 +69,7 @@ But if you need to create multiple instances, the `Logger` constructor is also e
 
 ```js
 const logger = new Logger({
-  level: String,     // Defaults to `LOG_LEVEL` if set, or 'info'.
+  level: String,     // Defaults to `LOG_LEVEL` if set, or `'info'`.
   color: Boolean,    // Defaults to `true` only if `NODE=ENV != 'production'`.
   readable: Boolean, // Defaults to `true` only if `NODE=ENV != 'production'`.
 })
