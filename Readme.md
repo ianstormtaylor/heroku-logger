@@ -63,6 +63,9 @@ import logger from 'heroku-logger'
 
 logger.info('message', { key: 'value' })
 ```
+```ini
+[info] message key=value level=info message=message
+```
 
 The package exports the one-liner `logger` singleton as the default, which is already instanciated with sane defaults using the `LOG_LEVEL` and `NODE_ENV` environment variables.
 
@@ -91,22 +94,26 @@ But if you need to create multiple instances, which can be useful for subclassin
 ```js
 logger.info('message', { key: 'value' })
 ```
+```ini
+[info] message key=value level=info message=message
+```
 
 Log a `message` with `data` to the console at `level`, where level is one of:
 
-```
-trace
-debug
-info
-warn
-error
-fatal
-```
+- `trace`
+- `debug`
+- `info`
+- `warn`
+- `error`
+- `fatal`
 
 #### logger.log(level, message, data)
 
 ```js
 logger.log('info', 'message', { key: 'value' })
+```
+```ini
+[info] message key=value level=info message=message
 ```
 
 Log a `message` with `data` to the console at `level`.
@@ -114,7 +121,12 @@ Log a `message` with `data` to the console at `level`.
 #### logger.clone(options)
 
 ```js
-const other = logger.clone({ prefix: 'my-component' })
+const other = logger.clone({ prefix: '[package] ' })
+
+other.info('message', { key: 'value' })
+```
+```ini
+[info] [package] message key=value level=info message=message
 ```
 
 Create a new `Logger` instance, copying the existing loggers config, but extending it with optional `options`.
