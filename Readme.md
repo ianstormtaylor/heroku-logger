@@ -63,7 +63,7 @@ import logger from 'heroku-logger'
 
 logger.info('message', { key: 'value' })
 ```
-```irc
+```
 [info] message key=value level=info message=message
 ```
 
@@ -95,7 +95,7 @@ But if you need to create multiple instances, which can be useful for subclassin
 logger.info('message', { key: 'value' })
 logger.error('error!', { code: 400 })
 ```
-```ruby
+```
 [info] message key=value level=info message=message
 [error] error! code=400 level=error message=error!
 ```
@@ -114,7 +114,7 @@ Log a `message` with `data` to the console at `level`, where level is one of:
 ```js
 logger.log('info', 'message', { key: 'value' })
 ```
-```js
+```
 [info] message key=value level=info message=message
 ```
 
@@ -127,7 +127,7 @@ const other = logger.clone({ prefix: '[package] ' })
 
 other.info('message', { key: 'value' })
 ```
-```python
+```
 [info] [package] message key=value level=info message=message
 ```
 
