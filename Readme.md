@@ -58,8 +58,6 @@ That's it!
 
 ### API
 
-#### logger: Logger
-
 ```js
 import logger from 'heroku-logger'
 
@@ -68,7 +66,7 @@ logger.info('message', { key: 'value' })
 
 The package exports the one-liner `logger` singleton as the default, which is already instanciated with sane defaults using the `LOG_LEVEL` and `NODE_ENV` environment variables.
 
-#### new Logger(options: Object)
+#### new Logger(options)
 
 ```js
 import { Logger } from 'heroku-logger'
@@ -88,11 +86,7 @@ But if you need to create multiple instances, which can be useful for subclassin
 - `readable` sets whether to log the `message` separate from the `data`.
 - `prefix` sets a string that will be prepend to every message.
 
-#### logger.log(level: String, message: String, data: Object)
-
-Log a `message` with `data` to the console at `level`.
-
-#### logger.\[level\](message: String, data: Object)
+#### logger\[level\](message, data)
 
 ```js
 logger.info('message', { key: 'value' })
@@ -109,7 +103,15 @@ error
 fatal
 ```
 
-#### logger.clone(options: Object)
+#### logger.log(level, message, data)
+
+```js
+logger.log('info', 'message', { key: 'value' })
+```
+
+Log a `message` with `data` to the console at `level`.
+
+#### logger.clone(options)
 
 ```js
 const other = logger.clone({ prefix: 'my-component' })
