@@ -1,7 +1,6 @@
 
 import Logfmt from 'logfmt'
 import chalk from 'chalk'
-import is from 'is'
 import flatten from 'flat'
 
 /**
@@ -64,11 +63,15 @@ class Logger {
   /**
    * Constructor.
    *
-   * @type {Object} options
+   * @param {Object} options
    */
 
   constructor(options = {}) {
-    let { color, level, readable } = options
+    let {
+      color = (NODE_ENV != 'production'),
+      level = (LOG_LEVEL || 'info'),
+      readable = (NODE_ENV != 'production'),
+    } = options
 
     if (typeof level != 'string') {
       level = 'info'
@@ -100,18 +103,22 @@ class Logger {
    * @param {Object} data
    */
 
-  log = (level, message, data = {}) => {
+  log = (level, message, data) => {
+    if (typeof level != 'string') {
+      level = 'info'
+    }
+
     level = level.toLowerCase()
 
     if (!(level in LEVELS)) {
-      return this.log('info', message, data)
+      level = 'info'
     }
 
-    if (!is.string(message)) {
-      message = message.toString()
+    if (typeof message != 'string') {
+      message = String(message)
     }
 
-    if (!is.object(data)) {
+    if (typeof data != 'object') {
       data = {}
     }
 
@@ -154,6 +161,20 @@ class Logger {
     }
   }
 
+  /**
+   * Create a new logger, extending the current logger's config.
+   *
+   * @param {Object} options
+   * @return {Logger}
+   */
+
+  clone = (options = {}) => {
+    return new Logger({
+      ...this.config,
+      ...options,
+    })
+  }
+
 }
 
 /**
@@ -162,11 +183,7 @@ class Logger {
  * @type {Logger}
  */
 
-const logger = new Logger({
-  level: LOG_LEVEL || 'info',
-  readable: NODE_ENV != 'production',
-  color: NODE_ENV != 'production',
-})
+const logger = new Logger()
 
 /**
  * Export.

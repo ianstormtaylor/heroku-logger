@@ -47,8 +47,8 @@ describe('heroku-logger', () => {
       const l = new Logger()
       assert.deepEqual(l.config, {
         level: 'info',
-        color: false,
-        readable: false,
+        color: true,
+        readable: true,
         threshold: 2,
       })
     })
