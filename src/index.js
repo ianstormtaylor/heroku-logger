@@ -70,6 +70,7 @@ class Logger {
     let {
       color = (NODE_ENV != 'production'),
       level = (LOG_LEVEL || 'info'),
+      prefix = '',
       readable = (NODE_ENV != 'production'),
     } = options
 
@@ -83,8 +84,13 @@ class Logger {
       level = 'info'
     }
 
+    if (typeof prefix != 'string') {
+      prefix = String(prefix)
+    }
+
     this.config = {
       level,
+      prefix,
       color: !!color,
       readable: !!readable,
       threshold: LEVELS[level],
@@ -122,11 +128,11 @@ class Logger {
       data = {}
     }
 
-    const { threshold } = this.config
+    const { threshold, prefix } = this.config
     const value = LEVELS[level]
     if (value < threshold) return
 
-    const output = this.format(level, message, data)
+    const output = this.format(level, prefix + message, data)
     console.log(output) // eslint-disable-line no-console
   }
 

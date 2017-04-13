@@ -65,27 +65,35 @@ import { Logger } from 'heroku-logger'
 
 The package exports the one-liner `logger` singleton as the default, which is already instanciated with sane defaults using the `LOG_LEVEL` and `NODE_ENV` environment variables.
 
-But if you need to create multiple instances, the `Logger` constructor is also exported.
+But if you need to create multiple instances, the `Logger` constructor is also exported, which takes the following options:
 
 ```js
 const logger = new Logger({
   level: String,     // Defaults to `LOG_LEVEL` if set, or `'info'`.
   color: Boolean,    // Defaults to `true` only if `NODE=ENV != 'production'`.
   readable: Boolean, // Defaults to `true` only if `NODE=ENV != 'production'`.
+  prefix: String,    // Defaults to `''`.
 })
 ```
 
 - `level` sets the current log threshold, silencing logs that don't meet it.
 - `color` sets whether to log in colors, for easier scanning.
-- `readable` sets whether to log the `message` separate from the `data`
+- `readable` sets whether to log the `message` separate from the `data`.
+- `prefix` sets a string that will be prepend to every message.
 
-The following levels are available:
+#### logger.\[level\](message: String, data: Object)
+
+Log a `message` with `data` to the console at `level`, where level is one of:
 
 ```
-logger.trace
-logger.debug
-logger.info
-logger.warn
-logger.error
-logger.fatal
+trace
+debug
+info
+warn
+error
+fatal
 ```
+
+#### logger.clone(options: Object)
+
+Create a new `Logger` instance, copying the existing loggers config, but extending it with optional `options`.
