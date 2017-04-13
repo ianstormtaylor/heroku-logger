@@ -47,7 +47,7 @@ In development, it outputs an easy to read version...
 
 But in production, it omits the junk, since Heroku handles that for you, and simply outputs the data in [`logfmt`]()...
 
-```
+```ini
 2017-04-12T05:42:20.998389+00:00 app[web.1]: port=4000 level=info message="Starting server"
 2017-04-12T05:42:20.998389+00:00 app[web.1]: argument=type value=nuber level=error message="Invalid `type` argument"
 ```
@@ -63,7 +63,7 @@ import logger from 'heroku-logger'
 
 logger.info('message', { key: 'value' })
 ```
-```ini
+```irc
 [info] message key=value level=info message=message
 ```
 
@@ -93,9 +93,11 @@ But if you need to create multiple instances, which can be useful for subclassin
 
 ```js
 logger.info('message', { key: 'value' })
+logger.error('error!', { code: 400 })
 ```
-```ini
+```ruby
 [info] message key=value level=info message=message
+[error] error! code=400 level=error message=error!
 ```
 
 Log a `message` with `data` to the console at `level`, where level is one of:
@@ -112,7 +114,7 @@ Log a `message` with `data` to the console at `level`, where level is one of:
 ```js
 logger.log('info', 'message', { key: 'value' })
 ```
-```ini
+```js
 [info] message key=value level=info message=message
 ```
 
@@ -125,7 +127,7 @@ const other = logger.clone({ prefix: '[package] ' })
 
 other.info('message', { key: 'value' })
 ```
-```ini
+```python
 [info] [package] message key=value level=info message=message
 ```
 
