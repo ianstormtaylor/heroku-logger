@@ -13,18 +13,6 @@ A dead simple logger, designed to be perfect for Heroku apps.
 
 ---
 
-### Why?
-
-There are lots of Node.js logging packages—simple ones that basically just print strings to the console, and complex ones like [Winston](https://github.com/winstonjs/winston) or [Bunyan](https://github.com/trentm/node-bunyan) which give you fine-grained control.
-
-But none that were a one-liner for Heroku apps, with sane defaults.
-
-Heroku already handles all of the logging issues that complex libraries solve—timestamping, process-stamping, log draining, performance, etc. So the complex libraries are just extra configuration for no gains.
-
-But the one thing that no logger handled nicely was matching Heroku's [logfmt](https://brandur.org/logfmt) formatting out of the box. By using logfmt for your application logs, you get a consistent output for everything, so any consumers of the Heroku log drains can automatically parse them, because they're in the same format.
-
----
-
 ### Example
 
 Given an API which is what you'd expect...
@@ -50,6 +38,18 @@ In any add-ons attached to your Heroku log drain, the metadata will be picked up
 ![](./docs/screenshot-addon-expanded.png)
 
 That's it!
+
+---
+
+### Why?
+
+There are lots of Node.js logging packages—simple ones that basically just print strings to the console, and complex ones like [Winston](https://github.com/winstonjs/winston) or [Bunyan](https://github.com/trentm/node-bunyan) which give you fine-grained control.
+
+But none that were a one-liner for Heroku apps, with sane defaults.
+
+Heroku already handles all of the logging issues that complex libraries solve—timestamping, process-stamping, log draining, performance, etc. So the complex libraries are just extra configuration for no gains.
+
+But the one thing that no logger handled nicely was matching Heroku's [logfmt](https://brandur.org/logfmt) formatting out of the box. By using logfmt for your application logs, you get a consistent output for everything, so any consumers of the Heroku log drains can automatically parse them, because they're in the same format.
 
 ---
 
