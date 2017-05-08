@@ -148,7 +148,7 @@ class Logger {
     const { color, readable } = this.config
     const value = LEVELS[level]
     const flat = flatten(data, { delimiter: '#' })
-    const ctx = Object.assign({}, flat, {level, message})
+    const ctx = Object.assign({}, flat, { level, message })
     const string = logfmt.stringify(ctx)
 
     if (readable && color) {
@@ -197,5 +197,5 @@ const logger = new Logger()
  * @type {Logger}
  */
 
-logger.Logger = Logger
-module.exports = logger
+module.exports = exports = logger
+exports.Logger = Logger
