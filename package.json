@@ -2,7 +2,7 @@
   "name": "heroku-logger",
   "version": "0.1.0",
   "description": "A dead simple logger, designed to be perfect for Heroku apps.",
-  "repository": "git://github.com/contentshq/heroku-logger.git",
+  "repository": "git://github.com/ianstormtaylor/heroku-logger.git",
   "main": "./src/index.js",
   "dependencies": {
     "chalk": "^1.1.3",
