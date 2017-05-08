@@ -1,7 +1,7 @@
 
-import logger from '..'
-import { Logger } from '..'
-import assert from 'assert'
+const logger = require('..')
+const Logger = logger.Logger
+const assert = require('assert')
 
 /**
  * Examples.
