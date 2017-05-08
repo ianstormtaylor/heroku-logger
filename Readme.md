@@ -18,7 +18,7 @@ A dead simple logger, designed to be perfect for Heroku apps.
 Given an API which is what you'd expect...
 
 ```js
-import logger from 'heroku-logger'
+const logger = require('heroku-logger')
 
 logger.info('Starting server', { port: 4000 })
 logger.error('Invalid `type` argument', { argument: 'type', value: 'nuber' })
@@ -56,7 +56,7 @@ But the one thing that no logger handled nicely was matching Heroku's [logfmt](h
 ### API
 
 ```js
-import logger from 'heroku-logger'
+const logger = require('heroku-logger')
 
 logger.info('message', { key: 'value' })
 ```
@@ -69,7 +69,7 @@ The package exports the one-liner `logger` singleton as the default, which is al
 #### new Logger(options)
 
 ```js
-import { Logger } from 'heroku-logger'
+const Logger = require('heroku-logger').Logger
 
 const logger = new Logger({
   level: String,     // Defaults to `LOG_LEVEL` if set, or `'info'`.

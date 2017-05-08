@@ -1,7 +1,7 @@
 
-import Logfmt from 'logfmt'
-import chalk from 'chalk'
-import flatten from 'flat'
+const Logfmt = require('logfmt')
+const chalk = require('chalk')
+const flatten = require('flat')
 
 /**
  * Environment variables.
@@ -109,7 +109,7 @@ class Logger {
    * @param {Object} data
    */
 
-  log = (level, message, data) => {
+  log(level, message, data) {
     if (typeof level != 'string') {
       level = 'info'
     }
@@ -144,11 +144,11 @@ class Logger {
    * @param {Object} data
    */
 
-  format = (level, message, data) => {
+  format(level, message, data) {
     const { color, readable } = this.config
     const value = LEVELS[level]
     const flat = flatten(data, { delimiter: '#' })
-    const ctx = { ...flat, level, message }
+    const ctx = Object.assign({}, flat, {level, message})
     const string = logfmt.stringify(ctx)
 
     if (readable && color) {
@@ -174,11 +174,11 @@ class Logger {
    * @return {Logger}
    */
 
-  clone = (options = {}) => {
-    return new Logger({
-      ...this.config,
-      ...options,
-    })
+  clone(options = {}) {
+    return new Logger(Object.assign({},
+      this.config,
+      options
+    ))
   }
 
 }
@@ -197,5 +197,5 @@ const logger = new Logger()
  * @type {Logger}
  */
 
-export default logger
-export { Logger }
+logger.Logger = Logger
+module.exports = logger
