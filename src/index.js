@@ -4,15 +4,18 @@ const chalk = require('chalk')
 const flatten = require('flat')
 
 /**
- * Environment variables.
+ * Environment variables, with a client-side guard.
  *
  * @type {String}
  */
 
-const {
-  LOG_LEVEL,
-  NODE_ENV,
-} = process.env
+let LOG_LEVEL
+let NODE_ENV
+
+if (typeof process !== 'undefined') {
+  LOG_LEVEL = process.env.LOG_LEVEL
+  NODE_ENV = process.env.NODE_ENV
+}
 
 /**
  * Logfmt helper.
