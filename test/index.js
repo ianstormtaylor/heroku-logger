@@ -20,6 +20,9 @@ example.warn('message', { data: [{ index: 1 }, { index: 2 }] })
 example.error('message', { data: [{ index: 1 }, { index: 2 }] })
 example.fatal('message', { data: [{ index: 1 }, { index: 2 }] })
 
+example.error(new Error('An error occured!'))
+example.fatal(new Error('A fatal error occured!'))
+
 /**
  * Tests.
  */

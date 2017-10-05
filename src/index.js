@@ -123,12 +123,18 @@ class Logger {
       level = 'info'
     }
 
-    if (typeof message != 'string') {
-      message = String(message)
-    }
-
     if (typeof data != 'object') {
       data = {}
+    }
+
+    if (message instanceof Error) {
+      data.error = message
+      data.stack = message.stack
+      message = message.message
+    }
+
+    if (typeof message != 'string') {
+      message = String(message)
     }
 
     const { threshold, prefix } = this.config
