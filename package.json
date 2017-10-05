@@ -1,6 +1,6 @@
 {
   "name": "heroku-logger",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "A dead simple logger, designed to be perfect for Heroku apps.",
   "repository": "git://github.com/ianstormtaylor/heroku-logger.git",
   "main": "./lib/index.js",
