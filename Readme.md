@@ -106,6 +106,8 @@ Log a `message` with `data` to the console at `level`, where level is one of:
 - `error`
 - `fatal`
 
+You can also pass an `Error` object as a `message`, in which case the logger will automatically convert it into useful `message` and `data` with a full stack trace.
+
 #### logger.log(level, message, data)
 
 ```js
