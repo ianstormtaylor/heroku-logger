@@ -36,7 +36,6 @@ const LEVELS = {
   info: 2,
   warn: 3,
   error: 4,
-  fatal: 5,
 }
 
 /**
@@ -50,7 +49,6 @@ const COLORS = {
   info: chalk.blue,
   warn: chalk.yellow,
   error: chalk.red,
-  fatal: chalk.bgRed.white,
 }
 
 /**
