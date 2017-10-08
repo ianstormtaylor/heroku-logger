@@ -32,7 +32,6 @@ const logfmt = new Logfmt()
  */
 
 const LEVELS = {
-  trace: 0,
   debug: 1,
   info: 2,
   warn: 3,
@@ -47,7 +46,6 @@ const LEVELS = {
  */
 
 const COLORS = {
-  trace: chalk.gray,
   debug: chalk.green,
   info: chalk.blue,
   warn: chalk.yellow,
