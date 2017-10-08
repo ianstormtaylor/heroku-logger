@@ -45,7 +45,7 @@ const LEVELS = {
  */
 
 const COLORS = {
-  debug: chalk.green,
+  debug: chalk.gray,
   info: chalk.blue,
   warn: chalk.yellow,
   error: chalk.red,
