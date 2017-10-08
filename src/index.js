@@ -74,13 +74,13 @@ class Logger {
     } = options
 
     if (typeof level != 'string') {
-      level = 'info'
+      level = 'none'
     }
 
     level = level.toLowerCase()
 
     if (!(level in LEVELS)) {
-      level = 'info'
+      level = 'none'
     }
 
     if (typeof prefix != 'string') {
@@ -92,7 +92,7 @@ class Logger {
       prefix,
       color: !!color,
       readable: !!readable,
-      threshold: LEVELS[level],
+      threshold: level == 'none' ? Infinity : LEVELS[level],
     }
 
     for (const key in LEVELS) {
