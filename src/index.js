@@ -9,13 +9,8 @@ const flatten = require('flat')
  * @type {String}
  */
 
-let LOG_LEVEL
-let NODE_ENV
-
-if (typeof process !== 'undefined') {
-  LOG_LEVEL = process.env.LOG_LEVEL
-  NODE_ENV = process.env.NODE_ENV
-}
+const LOG_LEVEL = typeof process != 'undefined' && process.env.LOG_LEVEL
+const NODE_ENV = typeof process != 'undefined' && process.env.NODE_ENV
 
 /**
  * Logfmt helper.
@@ -153,7 +148,7 @@ class Logger {
     const { color, readable } = this.config
     const value = LEVELS[level]
     const flat = flatten(data, { delimiter: '#' })
-    const ctx = Object.assign({}, flat, { level, message })
+    const ctx = { ...flat, level, message }
     const string = logfmt.stringify(ctx)
 
     if (readable && color) {
@@ -180,10 +175,10 @@ class Logger {
    */
 
   clone(options = {}) {
-    return new Logger(Object.assign({},
-      this.config,
-      options
-    ))
+    return new Logger({
+      ...this.config,
+      ...options,
+    })
   }
 
 }

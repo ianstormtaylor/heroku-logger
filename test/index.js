@@ -10,18 +10,15 @@ const assert = require('assert')
 const example = new Logger({
   readable: true,
   color: true,
-  level: 'trace',
+  level: 'debug',
 })
 
-example.trace('message', { data: [{ index: 1 }, { index: 2 }] })
 example.debug('message', { data: [{ index: 1 }, { index: 2 }] })
 example.info('message', { data: [{ index: 1 }, { index: 2 }] })
 example.warn('message', { data: [{ index: 1 }, { index: 2 }] })
 example.error('message', { data: [{ index: 1 }, { index: 2 }] })
-example.fatal('message', { data: [{ index: 1 }, { index: 2 }] })
 
 example.error(new Error('An error occured!'))
-example.fatal(new Error('A fatal error occured!'))
 
 /**
  * Tests.
@@ -57,10 +54,6 @@ describe('heroku-logger', () => {
       })
     })
 
-    it('should define `logger.trace`', () => {
-      assert.equal(typeof logger.trace, 'function')
-    })
-
     it('should define `logger.debug`', () => {
       assert.equal(typeof logger.debug, 'function')
     })
@@ -75,10 +68,6 @@ describe('heroku-logger', () => {
 
     it('should define `logger.error`', () => {
       assert.equal(typeof logger.error, 'function')
-    })
-
-    it('should define `logger.fatal`', () => {
-      assert.equal(typeof logger.fatal, 'function')
     })
 
   })
