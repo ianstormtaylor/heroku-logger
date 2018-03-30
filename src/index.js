@@ -66,6 +66,7 @@ class Logger {
       level = (LOG_LEVEL || 'info'),
       prefix = '',
       readable = (NODE_ENV != 'production'),
+      delimiter = '#',
     } = options
 
     if (typeof level != 'string') {
@@ -88,6 +89,7 @@ class Logger {
       color: !!color,
       readable: !!readable,
       threshold: level == 'none' ? Infinity : LEVELS[level],
+      delimiter,
     }
 
     for (const key in LEVELS) {
@@ -145,9 +147,9 @@ class Logger {
    */
 
   format(level, message, data) {
-    const { color, readable } = this.config
+    const { color, readable, delimiter } = this.config
     const value = LEVELS[level]
-    const flat = flatten(data, { delimiter: '#' })
+    const flat = flatten(data, { delimiter })
     const ctx = { ...flat, level, message }
     const string = logfmt.stringify(ctx)
 
