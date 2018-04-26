@@ -20,6 +20,9 @@ example.error('message', { data: [{ index: 1 }, { index: 2 }] })
 
 example.error(new Error('An error occured!'))
 
+const other = example.clone({ prefix: 'foo', delimiter: '.' })
+other.info('message', { data: [{ index: 1 }, { index: 2 }] })
+
 /**
  * Tests.
  */
@@ -43,7 +46,7 @@ describe('heroku-logger', () => {
       assert(l instanceof Logger)
     })
 
-    it('should set config', () => {
+    it('should set config (default values)', () => {
       const l = new Logger()
       assert.deepEqual(l.config, {
         level: 'info',
@@ -51,6 +54,26 @@ describe('heroku-logger', () => {
         prefix: '',
         readable: true,
         threshold: 2,
+        delimiter: '#',
+      })
+    })
+
+    it('should set config', () => {
+      const l = new Logger({
+        level: 'warn',
+        color: false,
+        prefix: 'foo',
+        readable: false,
+        threshold: 3,
+        delimiter: '.',
+      })
+      assert.deepEqual(l.config, {
+        level: 'warn',
+        color: false,
+        prefix: 'foo',
+        readable: false,
+        threshold: 3,
+        delimiter: '.',
       })
     })
 
