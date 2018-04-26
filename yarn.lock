@@ -1008,6 +1008,10 @@ delegates@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
 
+destroy-circular@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/destroy-circular/-/destroy-circular-1.1.0.tgz#f76624b76f999f1ac18b0ab444495118293a3ce0"
+
 detect-indent@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-4.0.0.tgz#f76d064352cdf43a1cb6ce619c4ee3a9475de208"

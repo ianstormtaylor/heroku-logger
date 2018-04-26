@@ -1,6 +1,7 @@
 
 const Logfmt = require('logfmt')
 const chalk = require('chalk')
+const destroyCircular = require('destroy-circular')
 const flatten = require('flat')
 
 /**
@@ -147,6 +148,7 @@ class Logger {
    */
 
   format(level, message, data) {
+    data = destroyCircular(data)
     const { color, readable, delimiter } = this.config
     const value = LEVELS[level]
     const flat = flatten(data, { delimiter })
