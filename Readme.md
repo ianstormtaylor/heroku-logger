@@ -72,19 +72,21 @@ The package exports the one-liner `logger` singleton as the default, which is al
 const Logger = require('heroku-logger').Logger
 
 const logger = new Logger({
-  level: String,     // Defaults to `LOG_LEVEL` if set, or `'info'`.
   color: Boolean,    // Defaults to `true` only if `NODE=ENV != 'production'`.
-  readable: Boolean, // Defaults to `true` only if `NODE=ENV != 'production'`.
+  delimiter: String, // Defaults to  `'#'`.
+  level: String,     // Defaults to `LOG_LEVEL` if set, or `'info'`.
   prefix: String,    // Defaults to `''`.
+  readable: Boolean, // Defaults to `true` only if `NODE=ENV != 'production'`.
 })
 ```
 
 But if you need to create multiple instances, which can be useful for subclassing loggers based on the parts of your system, the `Logger` constructor is also exported, which takes the following options:
 
-- `level` sets the current log threshold, silencing logs that don't meet it.
 - `color` sets whether to log in colors, for easier scanning.
-- `readable` sets whether to log the `message` separate from the `data`.
+- `level` sets the current log threshold, silencing logs that don't meet it.
+- `delimiter` sets the delimiter to use for nested data keys.
 - `prefix` sets a string that will be prepend to every message.
+- `readable` sets whether to log the `message` separate from the `data`.
 
 #### logger\[level\](message, data)
 

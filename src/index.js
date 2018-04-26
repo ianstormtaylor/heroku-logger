@@ -64,10 +64,10 @@ class Logger {
   constructor(options = {}) {
     let {
       color = (NODE_ENV != 'production'),
+      delimiter = '#',
       level = (LOG_LEVEL || 'info'),
       prefix = '',
       readable = (NODE_ENV != 'production'),
-      delimiter = '#',
     } = options
 
     if (typeof level != 'string') {
@@ -85,12 +85,12 @@ class Logger {
     }
 
     this.config = {
+      color: !!color,
+      delimiter,
       level,
       prefix,
-      color: !!color,
       readable: !!readable,
       threshold: level == 'none' ? Infinity : LEVELS[level],
-      delimiter,
     }
 
     for (const key in LEVELS) {
