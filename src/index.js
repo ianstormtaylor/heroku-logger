@@ -152,7 +152,7 @@ class Logger {
     const { color, readable, delimiter } = this.config
     const value = LEVELS[level]
     const flat = flatten(data, { delimiter })
-    const ctx = NODE_ENV == 'development'
+    const ctx = NODE_ENV != 'production'
       ? { ...flat }
       : { ...flat, level, message }
     const string = logfmt.stringify(ctx)
