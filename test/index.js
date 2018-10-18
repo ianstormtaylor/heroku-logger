@@ -90,7 +90,7 @@ describe('heroku-logger', () => {
   it('should accept a delimiter option', () => {
     const l = new Logger({ delimiter: '.', color: false })
     const string = l.format('info', 'message', { key: { nested: 'value' }})
-    assert.equal(string, '[info] message key.nested=value level=info message=message')
+    assert.equal(string, '[info] message key.nested=value')
   })
 
   it('should not fail on circular data', () => {
